@@ -56,8 +56,7 @@ public class UsersController : ControllerBase
 public record CreateUserCommand(string FirstName, string LastName, string Email) : ICommand<Guid>
 {
     public static CreateUserCommand Create(string firstName, string lastName, string email)
-    {
-        // Këtu mund të bëhet validim bazik ose normalizim në të ardhmen
+    { 
         return new CreateUserCommand(firstName, lastName, email);
     }
 }
@@ -98,8 +97,7 @@ namespace Domain.Entities
 
         public static User Create(string firstName, string lastName, string email)
         {
-            var id = Guid.NewGuid();
-            // Mund të shtosh validime specifike të domenit këtu
+            var id = Guid.NewGuid(); 
             return new User(id, firstName, lastName, email);
         }
     }
@@ -108,8 +106,7 @@ namespace Domain.Entities
 // ===== Infrastructure Layer =====
 public interface IUserRepository
 {
-    Task AddAsync(User user);
-    // Opsione tjera: GetById, Remove, Update
+    Task AddAsync(User user); 
 }
 
 // ===== Decorator Layer =====
